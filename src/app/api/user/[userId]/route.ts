@@ -5,67 +5,87 @@ export async function PUT(
   request: Request,
   { params: { userId } }: { params: { userId: number } }
 ) {
-  const req = await request.json()
+  try {
+    const req = await request.json()
 
-  const userIdFormated = Number(userId)
+    const userIdFormated = Number(userId)
 
-  const { name, password } = req
+    const { name, password } = req
 
-  if (!name && !password) {
+    if (!name && !password) {
+      return new NextResponse(
+        JSON.stringify({
+          error: {
+            code: 'MISSING_DATA',
+          },
+        }),
+        { status: 400 }
+      )
+    }
+
+    await prisma.user.update({
+      where: {
+        id: userIdFormated,
+      },
+      data: {
+        name,
+        password,
+      },
+    })
+
     return new NextResponse(
       JSON.stringify({
-        error: {
-          code: 'MISSING_DATA',
-        },
+        success: true,
       }),
-      { status: 400 }
+      { status: 200 }
+    )
+  } catch (error) {
+    return new NextResponse(
+      JSON.stringify({
+        success: false,
+        error,
+      }),
+      { status: 500 }
     )
   }
-
-  await prisma.user.update({
-    where: {
-      id: userIdFormated,
-    },
-    data: {
-      name,
-      password,
-    },
-  })
-
-  return new NextResponse(
-    JSON.stringify({
-      success: true,
-    }),
-    { status: 200 }
-  )
 }
 
 export async function DELETE(
   request: Request,
   { params: { userId } }: { params: { userId: number } }
 ) {
-  const userIdFormated = Number(userId)
+  try {
+    const userIdFormated = Number(userId)
 
-  await prisma.userHistoric.deleteMany({
-    where: {
-      userId: userIdFormated,
-    },
-  })
-  await prisma.userFavorites.deleteMany({
-    where: {
-      userId: userIdFormated,
-    },
-  })
-  await prisma.user.delete({
-    where: {
-      id: userIdFormated,
-    },
-  })
+    await prisma.userHistoric.deleteMany({
+      where: {
+        userId: userIdFormated,
+      },
+    })
+    await prisma.userFavorites.deleteMany({
+      where: {
+        userId: userIdFormated,
+      },
+    })
+    await prisma.user.delete({
+      where: {
+        id: userIdFormated,
+      },
+    })
 
-  return new NextResponse(
-    JSON.stringify({
-      success: true,
-    }),
-    { status: 200 }
-  )
+    return new NextResponse(
+      JSON.stringify({
+        success: true,
+      }),
+      { status: 200 }
+    )
+  } catch (error) {
+    return new NextResponse(
+      JSON.stringify({
+        success: false,
+        error,
+      }),
+      { status: 500 }
+    )
+  }
 }

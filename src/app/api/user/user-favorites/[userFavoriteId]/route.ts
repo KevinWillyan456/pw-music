@@ -5,57 +5,77 @@ export async function PUT(
   request: Request,
   { params: { userFavoriteId } }: { params: { userFavoriteId: number } }
 ) {
-  const req = await request.json()
+  try {
+    const req = await request.json()
 
-  const userIdFormated = Number(userFavoriteId)
+    const userIdFormated = Number(userFavoriteId)
 
-  const { musicId, userId } = req
+    const { musicId, userId } = req
 
-  if (!musicId && !userId) {
+    if (!musicId && !userId) {
+      return new NextResponse(
+        JSON.stringify({
+          error: {
+            code: 'MISSING_DATA',
+          },
+        }),
+        { status: 400 }
+      )
+    }
+
+    await prisma.userFavorites.update({
+      where: {
+        id: userIdFormated,
+      },
+      data: {
+        musicId,
+        userId,
+      },
+    })
+
     return new NextResponse(
       JSON.stringify({
-        error: {
-          code: 'MISSING_DATA',
-        },
+        success: true,
       }),
-      { status: 400 }
+      { status: 200 }
+    )
+  } catch (error) {
+    return new NextResponse(
+      JSON.stringify({
+        success: false,
+        error,
+      }),
+      { status: 500 }
     )
   }
-
-  await prisma.userFavorites.update({
-    where: {
-      id: userIdFormated,
-    },
-    data: {
-      musicId,
-      userId,
-    },
-  })
-
-  return new NextResponse(
-    JSON.stringify({
-      success: true,
-    }),
-    { status: 200 }
-  )
 }
 
 export async function DELETE(
   request: Request,
   { params: { userFavoriteId } }: { params: { userFavoriteId: number } }
 ) {
-  const userIdFormated = Number(userFavoriteId)
+  try {
+    const userIdFormated = Number(userFavoriteId)
 
-  await prisma.userFavorites.delete({
-    where: {
-      id: userIdFormated,
-    },
-  })
+    await prisma.userFavorites.delete({
+      where: {
+        id: userIdFormated,
+      },
+    })
 
-  return new NextResponse(
-    JSON.stringify({
-      success: true,
-    }),
-    { status: 200 }
-  )
+    return new NextResponse(
+      JSON.stringify({
+        success: true,
+      }),
+      { status: 200 }
+    )
+  } catch (error) {
+    return new NextResponse(
+      JSON.stringify({
+        success: false,
+        error,
+      }),
+      { status: 500 }
+    )
+  }
 }
