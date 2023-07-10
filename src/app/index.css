@@ -1,0 +1,817 @@
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--color-black);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--color-blue-2);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 79px;
+}
+
+.terms-of-use {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+
+  width: 60px;
+  height: 60px;
+
+  background-color: var(--color-blue-4);
+  border-radius: 50%;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.terms-of-use ion-icon {
+  width: 35px;
+  height: 35px;
+  color: var(--color-white-1);
+}
+
+.terms-of-use-text {
+  animation: terms-animate 500ms;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  background-color: rgba(0, 0, 0, 0.6);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.terms-of-use-text .box-wrapper {
+  position: relative;
+  width: 320px;
+  color: var(--color-white-1);
+  font-size: 25px;
+  margin-bottom: 20px;
+  background-color: var(--color-blue-1);
+  padding: 20px;
+
+  border: 2px solid var(--color-white-1);
+  border-radius: 10px;
+}
+.terms-of-use-text .box-wrapper .title {
+  color: var(--color-white-1);
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+.terms-of-use-text .box-wrapper .text {
+  color: var(--color-white-1);
+  font-size: 18px;
+  text-align: justify;
+}
+.terms-of-use-text .box-wrapper .close {
+  top: 18px;
+  right: 10px;
+
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  border-radius: 50%;
+
+  padding: 2px;
+
+  position: absolute;
+  color: var(--color-white-1);
+
+  cursor: pointer;
+}
+
+@keyframes terms-animate {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.cabecalho {
+  width: 100%;
+  background-color: var(--color-blue-1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+.cabecalho .box-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.cabecalho .list-options {
+  display: flex;
+  list-style-type: none;
+  color: var(--color-white-1);
+}
+.cabecalho .service-logo {
+  cursor: pointer;
+}
+.cabecalho .service-logo img {
+  width: 100%;
+}
+
+.list-options li {
+  margin-right: 40px;
+}
+.list-options li a {
+  transition: 200ms;
+  font-size: 25px;
+  cursor: pointer;
+  color: var(--color-white-1);
+  text-decoration: none;
+}
+.list-options li a:hover {
+  color: var(--color-blue-2);
+}
+
+.box-wrapper .button-login {
+  display: flex;
+}
+.button-login button {
+  width: 150px;
+  color: var(--color-white-1);
+  font-size: 25px;
+  padding: 15px 0;
+  background-color: var(--color-blue-4);
+  border: none;
+  cursor: pointer;
+}
+
+.section-banner .button-register {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: absolute;
+  top: 80.5555%;
+}
+.button-register button {
+  width: 200px;
+  color: var(--color-white-1);
+  font-size: 25px;
+  padding: 15px 0;
+  background-color: var(--color-blue-4);
+  border: none;
+  cursor: pointer;
+}
+
+.section-banner {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--color-blue-4);
+
+  background-image: url('https://drive.google.com/uc?export=download&id=1YcvUAxqZXaQ1n6HP7CWY6aQfVh9ESRXv');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  position: relative;
+}
+
+.section-banner .title-1 {
+  font-size: 70px;
+  position: absolute;
+
+  top: 20.3703%;
+  width: 100%;
+  text-align: center;
+  color: var(--color-white-1);
+
+  text-shadow: 0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1);
+}
+
+.section-banner .title-2 {
+  font-size: 60px;
+  position: absolute;
+
+  top: 71.9444%;
+  width: 100%;
+  text-align: center;
+  color: var(--color-white-1);
+
+  text-shadow: 0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1);
+}
+
+.section-banner .title-3 {
+  font-size: 25px;
+  position: absolute;
+
+  top: 89.8114%;
+  width: 100%;
+  text-align: center;
+  color: var(--color-white-1);
+
+  text-shadow: 0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1);
+}
+
+.section-listen {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--color-blue-4);
+
+  background-image: url('https://drive.google.com/uc?export=download&id=1YVyHR1JfPOn7j6yOqoXFaA3jvBsR4npi');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  display: flex;
+  align-items: center;
+  padding-left: 100px;
+  position: relative;
+}
+.section-listen .box-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.section-listen .box-wrapper .title-1 {
+  font-size: 60px;
+
+  color: var(--color-white-1);
+
+  text-shadow: 0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1);
+}
+.section-listen .box-wrapper .title-2 {
+  font-size: 40px;
+
+  color: var(--color-white-1);
+
+  text-shadow: 0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1);
+}
+
+.section-very-high-quality {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--color-blue-4);
+
+  background-image: url('https://drive.google.com/uc?export=download&id=1Y_mTmsBrOrgIoApFMkgkzJeV2UPvXu6d');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  display: flex;
+  align-items: center;
+  padding-left: 100px;
+  position: relative;
+}
+.section-very-high-quality .box-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.section-very-high-quality .box-wrapper .title-1 {
+  font-size: 60px;
+
+  color: var(--color-white-1);
+
+  text-shadow: 0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1);
+}
+.section-very-high-quality .box-wrapper .title-2 {
+  display: flex;
+  align-items: center;
+  font-size: 80px;
+  margin-top: 20px;
+
+  color: var(--color-white-1);
+
+  text-shadow: 0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1);
+}
+.section-very-high-quality .box-wrapper .title-2 ion-icon {
+  width: 150px;
+  height: 150px;
+  margin-right: 10px;
+}
+
+.section-reactive {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--color-blue-4);
+
+  background-image: url('https://drive.google.com/uc?export=download&id=1Y_8wkLXeM6OkSKkCHSQNV63dJPGHahfj');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+}
+.section-reactive .box-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+}
+.section-reactive .box-wrapper .title-1 {
+  font-size: 80px;
+
+  color: var(--color-white-1);
+
+  text-shadow: 0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1);
+}
+.section-reactive .box-wrapper .title-2 {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  margin-top: 20px;
+  width: 600px;
+  text-align: center;
+
+  color: var(--color-white-1);
+
+  text-shadow: 0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1);
+}
+
+.section-reactive .blue-blur {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background-color: var(--color-blue-2);
+  filter: blur(50px);
+
+  border-radius: 50%;
+
+  color: var(--color-white-1);
+
+  text-shadow: 0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1);
+
+  top: 80px;
+  left: 80px;
+}
+.section-reactive .blue-blur-title {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+
+  color: var(--color-white-1);
+
+  text-shadow: 0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1);
+
+  font-size: 64px;
+
+  top: 80px;
+  left: 80px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-reactive .red-blur {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background-color: var(--color-red-2);
+  filter: blur(50px);
+
+  border-radius: 50%;
+
+  color: var(--color-white-1);
+
+  text-shadow: 0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1);
+
+  top: 37.037%;
+  left: 64.5833%;
+}
+.section-reactive .red-blur-title {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+
+  color: var(--color-white-1);
+
+  text-shadow: 0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1),
+    0 0 6px var(--color-blue-1), 0 0 6px var(--color-blue-1);
+
+  font-size: 64px;
+
+  top: 37.037%;
+  left: 64.5833%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rodape {
+  width: 100%;
+  background-color: var(--color-blue-1);
+  height: 160px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rodape .box-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.rodape .name-service {
+  font-size: 32px;
+  color: var(--color-white-1);
+  margin-bottom: 20px;
+}
+.rodape .copyright {
+  font-size: 16px;
+  color: var(--color-white-1);
+}
+@media (max-width: 1800px) {
+  .section-reactive .blue-blur {
+    width: 500px;
+    height: 500px;
+  }
+  .section-reactive .blue-blur-title {
+    width: 500px;
+    height: 500px;
+    font-size: 50px;
+  }
+  .section-reactive .red-blur {
+    width: 500px;
+    height: 500px;
+  }
+  .section-reactive .red-blur-title {
+    width: 500px;
+    height: 500px;
+    font-size: 50px;
+  }
+
+  .section-reactive .box-wrapper .title-1 {
+    font-size: 60px;
+  }
+  .section-reactive .box-wrapper .title-2 {
+    font-size: 24px;
+    width: 450px;
+  }
+}
+@media (max-width: 1500px) {
+  .section-banner .title-1 {
+    font-size: 50px;
+  }
+  .section-banner .title-2 {
+    font-size: 40px;
+  }
+  .section-banner .title-3 {
+    font-size: 20px;
+  }
+
+  .section-listen .box-wrapper .title-1,
+  .section-very-high-quality .box-wrapper .title-1 {
+    font-size: 50px;
+  }
+  .section-very-high-quality .box-wrapper .title-2 {
+    font-size: 60px;
+  }
+  .section-very-high-quality .box-wrapper .title-2 ion-icon {
+    width: 110px;
+    height: 110px;
+  }
+  .section-listen .box-wrapper .title-2 {
+    font-size: 30px;
+  }
+  .section-reactive .blue-blur {
+    width: 450px;
+    height: 450px;
+  }
+  .section-reactive .blue-blur-title {
+    width: 450px;
+    height: 450px;
+    font-size: 40px;
+  }
+  .section-reactive .red-blur {
+    width: 450px;
+    height: 450px;
+  }
+  .section-reactive .red-blur-title {
+    width: 450px;
+    height: 450px;
+    font-size: 40px;
+  }
+
+  .section-reactive .box-wrapper .title-1 {
+    font-size: 60px;
+  }
+  .section-reactive .box-wrapper .title-2 {
+    font-size: 24px;
+    width: 300px;
+  }
+}
+
+@media (max-width: 1359px) {
+  .cabecalho .list-options {
+    display: none;
+  }
+  .cabecalho .service-logo {
+    width: 110px;
+    height: 24.93px;
+  }
+  .cabecalho {
+    height: 60px;
+  }
+  .button-login button {
+    width: 80px;
+    height: 40px;
+    font-size: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .section-banner .title-1 {
+    font-size: 32px;
+  }
+  .section-banner .title-2 {
+    font-size: 24px;
+    width: 320px;
+    left: calc(50% - 320px / 2);
+
+    text-shadow: 0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1);
+  }
+  .section-banner .title-3 {
+    display: none;
+  }
+  .terms-of-use {
+    display: none;
+  }
+  .section-listen .box-wrapper .title-1 {
+    position: absolute;
+
+    width: 320px;
+    bottom: 100px;
+    left: calc(50% - 320px / 2);
+    font-size: 24px;
+    text-align: center;
+
+    text-shadow: 0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1);
+  }
+  .section-listen .box-wrapper .title-2 {
+    position: absolute;
+
+    width: 320px;
+    bottom: 40px;
+    left: calc(50% - 320px / 2);
+    font-size: 16px;
+    text-align: center;
+
+    text-shadow: 0 0 3px var(--color-blue-1), 0 0 3px var(--color-blue-1),
+      0 0 3px var(--color-blue-1), 0 0 3px var(--color-blue-1),
+      0 0 3px var(--color-blue-1), 0 0 3px var(--color-blue-1),
+      0 0 3px var(--color-blue-1), 0 0 3px var(--color-blue-1),
+      0 0 3px var(--color-blue-1), 0 0 3px var(--color-blue-1),
+      0 0 3px var(--color-blue-1), 0 0 3px var(--color-blue-1),
+      0 0 3px var(--color-blue-1), 0 0 3px var(--color-blue-1),
+      0 0 3px var(--color-blue-1), 0 0 3px var(--color-blue-1),
+      0 0 3px var(--color-blue-1), 0 0 3px var(--color-blue-1),
+      0 0 3px var(--color-blue-1), 0 0 3px var(--color-blue-1);
+  }
+  .section-listen {
+    background-image: url('https://drive.google.com/uc?export=download&id=1Y-4_UslZPCPTEEVVrXD0-mHYUSkS0rXT');
+  }
+  .section-very-high-quality {
+    background-image: url('https://drive.google.com/uc?export=download&id=1wWApcT8fFsA8zBwzU-hvpfMCzFiHVAuE');
+  }
+  .section-very-high-quality .box-wrapper .title-1 {
+    position: absolute;
+
+    width: 320px;
+    bottom: 100px;
+    left: calc(50% - 320px / 2);
+    font-size: 24px;
+    text-align: center;
+
+    text-shadow: 0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1);
+  }
+  .section-very-high-quality .box-wrapper .title-2 {
+    position: absolute;
+    bottom: 40px;
+    width: 320px;
+    left: calc(50% - 320px / 2);
+    font-size: 32px;
+    justify-content: center;
+
+    text-shadow: 0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1);
+  }
+  .section-very-high-quality .box-wrapper .title-2 ion-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  .section-reactive .box-wrapper .title-1 {
+    font-size: 32px;
+
+    text-shadow: 0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1),
+      0 0 4px var(--color-blue-1), 0 0 4px var(--color-blue-1);
+  }
+  .section-reactive .box-wrapper .title-2 {
+    width: 320px;
+    font-size: 16px;
+    justify-content: center;
+
+    text-shadow: 0 0 3px var(--color-blue-1), 0 0 3px var(--color-blue-1),
+      0 0 3px var(--color-blue-1), 0 0 3px var(--color-blue-1),
+      0 0 3px var(--color-blue-1), 0 0 3px var(--color-blue-1),
+      0 0 3px var(--color-blue-1), 0 0 3px var(--color-blue-1),
+      0 0 3px var(--color-blue-1), 0 0 3px var(--color-blue-1),
+      0 0 3px var(--color-blue-1), 0 0 3px var(--color-blue-1),
+      0 0 3px var(--color-blue-1), 0 0 3px var(--color-blue-1),
+      0 0 3px var(--color-blue-1), 0 0 3px var(--color-blue-1),
+      0 0 3px var(--color-blue-1), 0 0 3px var(--color-blue-1),
+      0 0 3px var(--color-blue-1), 0 0 3px var(--color-blue-1);
+  }
+  .rodape {
+    height: 100px;
+  }
+  .rodape .name-service {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .rodape .copyright {
+    font-size: 12px;
+  }
+}
