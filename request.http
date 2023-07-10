@@ -1,0 +1,14 @@
+GET http://localhost:3000/api/music HTTP/1.1
+content-type: application/json
+
+###
+POST http://localhost:3000/api/music HTTP/1.1
+content-type: application/json
+
+{
+    "audioUrl": "https://audiourl.mp3",
+    "coverUrl": "https://myurl-image.png",
+    "gender": "RAP",
+    "theme": "RAP Theme",
+    "title": "Minha música"
+}
