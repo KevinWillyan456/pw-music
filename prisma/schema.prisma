@@ -29,7 +29,7 @@ model Playlist {
   coverUrl String
   description String
   gender String
-  totalSongs Int
+  totalSongs Int @default(0)
   additionDate DateTime
 }
 
