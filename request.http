@@ -51,7 +51,7 @@ content-type: application/json
     "userId": 2
 }
 ###
-PUT http://localhost:3000/api/user/user-favorites/1 HTTP/1.1
+PUT http://localhost:3000/api/user/user-favorites/3 HTTP/1.1
 content-type: application/json
 
 {
@@ -59,7 +59,7 @@ content-type: application/json
     "userId": 2
 }
 ###
-DELETE http://localhost:3000/api/user/user-favorites/1 HTTP/1.1
+DELETE http://localhost:3000/api/user/user-favorites/3 HTTP/1.1
 content-type: application/json
 
 #################### Playlist Request
