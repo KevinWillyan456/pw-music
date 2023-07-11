@@ -13,6 +13,20 @@ content-type: application/json
     "theme": "RAP Theme",
     "title": "Minha música"
 }
+###
+PUT http://localhost:3000/api/music/1 HTTP/1.1
+content-type: application/json
+
+{
+    "audioUrl": "https://audiourl.mp3",
+    "coverUrl": "https://myurl-image.png",
+    "gender": "RAP",
+    "theme": "RAP Theme",
+    "title": "Minha música"
+}
+###
+DELETE http://localhost:3000/api/music/2 HTTP/1.1
+content-type: application/json
 
 #################### User Request
 GET http://localhost:3000/api/user HTTP/1.1
@@ -58,6 +72,9 @@ content-type: application/json
     "musicId": 2,
     "userId": 2
 }
+###
+DELETE http://localhost:3000/api/user/user-favorites/5 HTTP/1.1
+content-type: application/json
 
 #################### User Request - Historic
 GET http://localhost:3000/api/user/user-historic HTTP/1.1
