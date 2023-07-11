@@ -58,8 +58,30 @@ content-type: application/json
     "musicId": 2,
     "userId": 2
 }
+
+#################### User Request - Historic
+GET http://localhost:3000/api/user/user-historic HTTP/1.1
+content-type: application/json
+
 ###
-DELETE http://localhost:3000/api/user/user-favorites/3 HTTP/1.1
+POST http://localhost:3000/api/user/user-historic HTTP/1.1
+content-type: application/json
+
+{
+    "musicId": 2,
+    "userId": 2
+}
+###
+PUT http://localhost:3000/api/user/user-historic/1 HTTP/1.1
+content-type: application/json
+
+{
+    "musicId": 2,
+    "userId": 2
+}
+
+###
+DELETE http://localhost:3000/api/user/user-historic/1 HTTP/1.1
 content-type: application/json
 
 #################### Playlist Request
