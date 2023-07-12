@@ -23,6 +23,18 @@ import './home.css'
 import './home-mobile.css'
 import { useEffect, useState } from 'react'
 
+console.error = (function (originalError) {
+  return function (...args) {
+    if (
+      typeof args[0] === 'string' &&
+      args[0].startsWith('Warning: Extra attributes from the server')
+    ) {
+      return
+    }
+    originalError.apply(console, args)
+  }
+})(console.error)
+
 const Home = () => {
   interface Music {
     id: number
