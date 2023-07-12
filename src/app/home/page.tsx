@@ -35,10 +35,18 @@ const Home = () => {
   const [musicData, setMusicData] = useState<Music[]>([])
 
   useEffect(() => {
-    fetch('/api/music')
-      .then((res) => res.json())
-      .then((res) => setMusicData(res))
+    fetchData()
   }, [])
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch('/api/music')
+      const jsonData = await response.json()
+      setMusicData(jsonData)
+    } catch (error) {
+      console.error('Error fetching data:', error)
+    }
+  }
 
   return (
     <>
