@@ -36,16 +36,16 @@ console.error = (function (originalError) {
   }
 })(console.error)
 
-const Home = () => {
-  interface Music {
-    id: number
-    theme: string
-    coverUrl: string
-    title: string
-    gender: string
-    audioUrl: string
-  }
+interface Music {
+  id: number
+  theme: string
+  coverUrl: string
+  title: string
+  gender: string
+  audioUrl: string
+}
 
+const Home = () => {
   const [musicData, setMusicData] = useState<Music[]>([])
   const [audioControllerPlayToggle, setAudioControllerPlayToggle] =
     useState(true)
@@ -71,67 +71,69 @@ const Home = () => {
       if (audioGlobalRef.current) {
         audioGlobalRef.current.pause()
         setAudioControllerPlayToggle(true)
-        // musicAnimationStatus.classList.remove('run');
+        // musicAnimationStatus.classList.remove('run'); 
       }
-    }    
+    }
   }
-  function audioControllerPlayFunctionNoPause(){
+  function audioControllerPlayFunctionNoPause() {
     if (audioGlobalRef.current) {
-      audioGlobalRef.current.play();
+      audioGlobalRef.current.play()
       setAudioControllerPlayToggle(false)
-        // musicAnimationStatus.classList.add('run');
+      // musicAnimationStatus.classList.add('run');
     }
-}
-  function audioControllerNextFunction(){
-    setIndexAudio(indexAudio + 1)
-    if(indexAudio >= musicData.length){
-      setIndexAudio(0)
-    }
-    
-    // let selectedTheme = musicDataShuffled[indexAudio].theme
-    // indexAudioId = musicDataShuffled[indexAudio]._id;
-    // indexAudioGender = musicDataShuffled[indexAudio].gender;
-    
-    allSongValueSetters();
-    audioControllerPlayFunctionNoPause()
-    // setMusicPlayTag();
-    // manageHistoric();
-    // refreshFavorite();
-    // themeChanger(selectedTheme);
-}
-function audioControllerPrevFunction(){
-  setIndexAudio(indexAudio - 1)
-  if(indexAudio < 0){
-      setIndexAudio(musicData.length - 1)
-    }
-
-    // let selectedTheme = musicDataShuffled[indexAudio].theme
-    // indexAudioId = musicDataShuffled[indexAudio]._id;
-    // indexAudioGender = musicDataShuffled[indexAudio].gender;
-
-    allSongValueSetters();
-    audioControllerPlayFunctionNoPause()
-    // setMusicPlayTag();
-    // manageHistoric();
-    // refreshFavorite();
-    // themeChanger(selectedTheme);
-}
-
-function allSongValueSetters(){
-  if (audioGlobalRef.current) {
-      audioGlobalRef.current.src = musicData[indexAudio].audioUrl;
   }
-      // indexAudioId = musicDataShuffled[indexAudio]._id;
-      // indexAudioGender = musicDataShuffled[indexAudio].gender;
-      // coverCurrentMusic.src = musicDataShuffled[indexAudio].coverUrl;
-      // containerFrameVideo.style.display = "none"
-      // currentCover.style.display = "block"
-      // currentCover.src = musicDataShuffled[indexAudio].coverUrl;
-      // backgroundCover.style.setProperty("background-image", `url("${musicDataShuffled[indexAudio].coverUrl}")`);
-      // titleCurrentMusic.innerHTML = musicDataShuffled[indexAudio].title;
-      // genderCurrentMusic.innerHTML = musicDataShuffled[indexAudio].gender;
-      // containerFrameVideo.innerHTML = "";
-}
+  function audioControllerNextFunction() {
+    if (indexAudio + 1 >= musicData.length) {
+      setIndexAudio(0)
+    } else {
+      setIndexAudio(indexAudio + 1)
+    }
+
+    // let selectedTheme = musicDataShuffled[indexAudio].theme
+    // indexAudioId = musicDataShuffled[indexAudio]._id;
+    // indexAudioGender = musicDataShuffled[indexAudio].gender;
+
+    allSongValueSetters()
+    audioControllerPlayFunctionNoPause()
+    // setMusicPlayTag();
+    // manageHistoric();
+    // refreshFavorite();
+    // themeChanger(selectedTheme);
+  }
+  function audioControllerPrevFunction() {
+    if (indexAudio - 1 < 0) {
+      setIndexAudio(musicData.length - 1)
+    } else {
+      setIndexAudio(indexAudio - 1)
+    }
+
+    // let selectedTheme = musicDataShuffled[indexAudio].theme
+    // indexAudioId = musicDataShuffled[indexAudio]._id;
+    // indexAudioGender = musicDataShuffled[indexAudio].gender;
+
+    // allSongValueSetters();
+    audioControllerPlayFunctionNoPause()
+    // setMusicPlayTag();
+    // manageHistoric();
+    // refreshFavorite();
+    // themeChanger(selectedTheme);
+  }
+
+  function allSongValueSetters() {
+    if (audioGlobalRef.current) {
+      // audioGlobalRef.current.src = musicData[indexAudio].audioUrl;
+    }
+    // indexAudioId = musicDataShuffled[indexAudio]._id;
+    // indexAudioGender = musicDataShuffled[indexAudio].gender;
+    // coverCurrentMusic.src = musicDataShuffled[indexAudio].coverUrl;
+    // containerFrameVideo.style.display = "none"
+    // currentCover.style.display = "block"
+    // currentCover.src = musicDataShuffled[indexAudio].coverUrl;
+    // backgroundCover.style.setProperty("background-image", `url("${musicDataShuffled[indexAudio].coverUrl}")`);
+    // titleCurrentMusic.innerHTML = musicDataShuffled[indexAudio].title;
+    // genderCurrentMusic.innerHTML = musicDataShuffled[indexAudio].gender;
+    // containerFrameVideo.innerHTML = "";
+  }
 
   const fetchData = async () => {
     try {
@@ -143,12 +145,19 @@ function allSongValueSetters(){
     }
   }
 
+  useEffect(() => {
+    if (musicData.length > 0) {
+      const currentTrack = musicData[indexAudio]
+      if (audioGlobalRef.current) {
+        audioGlobalRef.current.src = currentTrack.audioUrl
+        audioControllerPlayFunctionNoPause()
+      }
+    }
+  }, [indexAudio, musicData])
+
   return (
     <>
-      <audio
-        ref={audioGlobalRef}
-        src="https://pw-music-database.kevinsouza456.repl.co/Nightcore%20-%20Numb%20(Lyrics).mp3"
-      ></audio>
+      <audio ref={audioGlobalRef}></audio>
       <main className="super-main">
         <section className="main-playlist">
           <div className="box-wrapper-info">
