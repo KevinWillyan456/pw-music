@@ -9,6 +9,7 @@ import {
   volumeHigh,
   playSkipForwardCircle,
   playCircle,
+  pauseCircle,
   playSkipBackCircle,
   heartOutline,
   star,
@@ -21,7 +22,7 @@ import {
 } from 'ionicons/icons'
 import './home.css'
 import './home-mobile.css'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 console.error = (function (originalError) {
   return function (...args) {
@@ -42,13 +43,95 @@ const Home = () => {
     coverUrl: string
     title: string
     gender: string
+    audioUrl: string
   }
 
   const [musicData, setMusicData] = useState<Music[]>([])
+  const [audioControllerPlayToggle, setAudioControllerPlayToggle] =
+    useState(true)
+  const [indexAudio, setIndexAudio] = useState(0)
+
+  const audioGlobalRef = useRef<HTMLAudioElement | null>(null)
+  const audioControllerPrevRef = useRef(null)
+  const audioControllerPlayRef = useRef(null)
+  const audioControllerNextRef = useRef(null)
 
   useEffect(() => {
     fetchData()
   }, [])
+
+  function audioControllerPlayFunction() {
+    if (audioControllerPlayToggle) {
+      if (audioGlobalRef.current) {
+        audioGlobalRef.current.play()
+        setAudioControllerPlayToggle(false)
+        // musicAnimationStatus.classList.add('run');
+      }
+    } else {
+      if (audioGlobalRef.current) {
+        audioGlobalRef.current.pause()
+        setAudioControllerPlayToggle(true)
+        // musicAnimationStatus.classList.remove('run');
+      }
+    }    
+  }
+  function audioControllerPlayFunctionNoPause(){
+    if (audioGlobalRef.current) {
+      audioGlobalRef.current.play();
+      setAudioControllerPlayToggle(false)
+        // musicAnimationStatus.classList.add('run');
+    }
+}
+  function audioControllerNextFunction(){
+    setIndexAudio(indexAudio + 1)
+    if(indexAudio >= musicData.length){
+      setIndexAudio(0)
+    }
+    
+    // let selectedTheme = musicDataShuffled[indexAudio].theme
+    // indexAudioId = musicDataShuffled[indexAudio]._id;
+    // indexAudioGender = musicDataShuffled[indexAudio].gender;
+    
+    allSongValueSetters();
+    audioControllerPlayFunctionNoPause()
+    // setMusicPlayTag();
+    // manageHistoric();
+    // refreshFavorite();
+    // themeChanger(selectedTheme);
+}
+function audioControllerPrevFunction(){
+  setIndexAudio(indexAudio - 1)
+  if(indexAudio < 0){
+      setIndexAudio(musicData.length - 1)
+    }
+
+    // let selectedTheme = musicDataShuffled[indexAudio].theme
+    // indexAudioId = musicDataShuffled[indexAudio]._id;
+    // indexAudioGender = musicDataShuffled[indexAudio].gender;
+
+    allSongValueSetters();
+    audioControllerPlayFunctionNoPause()
+    // setMusicPlayTag();
+    // manageHistoric();
+    // refreshFavorite();
+    // themeChanger(selectedTheme);
+}
+
+function allSongValueSetters(){
+  if (audioGlobalRef.current) {
+      audioGlobalRef.current.src = musicData[indexAudio].audioUrl;
+  }
+      // indexAudioId = musicDataShuffled[indexAudio]._id;
+      // indexAudioGender = musicDataShuffled[indexAudio].gender;
+      // coverCurrentMusic.src = musicDataShuffled[indexAudio].coverUrl;
+      // containerFrameVideo.style.display = "none"
+      // currentCover.style.display = "block"
+      // currentCover.src = musicDataShuffled[indexAudio].coverUrl;
+      // backgroundCover.style.setProperty("background-image", `url("${musicDataShuffled[indexAudio].coverUrl}")`);
+      // titleCurrentMusic.innerHTML = musicDataShuffled[indexAudio].title;
+      // genderCurrentMusic.innerHTML = musicDataShuffled[indexAudio].gender;
+      // containerFrameVideo.innerHTML = "";
+}
 
   const fetchData = async () => {
     try {
@@ -62,6 +145,10 @@ const Home = () => {
 
   return (
     <>
+      <audio
+        ref={audioGlobalRef}
+        src="https://pw-music-database.kevinsouza456.repl.co/Nightcore%20-%20Numb%20(Lyrics).mp3"
+      ></audio>
       <main className="super-main">
         <section className="main-playlist">
           <div className="box-wrapper-info">
@@ -213,15 +300,21 @@ const Home = () => {
             <div className="container-controls">
               <IonIcon
                 icon={playSkipBackCircle}
-                id="audio-prev"
+                ref={audioControllerPrevRef}
                 style={{ marginRight: '10px' }}
+                onClick={audioControllerPrevFunction}
               />
               <IonIcon
-                icon={playCircle}
-                id="audio-play"
+                icon={audioControllerPlayToggle ? playCircle : pauseCircle}
+                ref={audioControllerPlayRef}
                 style={{ marginRight: '10px' }}
+                onClick={audioControllerPlayFunction}
               />
-              <IonIcon icon={playSkipForwardCircle} id="audio-next" />
+              <IonIcon
+                icon={playSkipForwardCircle}
+                ref={audioControllerNextRef}
+                onClick={audioControllerNextFunction}
+              />
             </div>
 
             <div className="container-duration-status">
