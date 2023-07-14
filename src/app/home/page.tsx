@@ -23,6 +23,7 @@ import {
 import './home.css'
 import './home-mobile.css'
 import { useEffect, useRef, useState } from 'react'
+import Music from './components/Music'
 
 console.error = (function (originalError) {
   return function (...args) {
@@ -36,7 +37,7 @@ console.error = (function (originalError) {
   }
 })(console.error)
 
-interface Music {
+export interface IMusic {
   id: number
   theme: string
   coverUrl: string
@@ -46,7 +47,7 @@ interface Music {
 }
 
 const Home = () => {
-  const [musicData, setMusicData] = useState<Music[]>([])
+  const [musicData, setMusicData] = useState<IMusic[]>([])
   const [audioControllerPlayToggle, setAudioControllerPlayToggle] =
     useState(true)
   const [indexAudio, setIndexAudio] = useState(0)
@@ -172,26 +173,7 @@ const Home = () => {
 
           <div className="container-playlist">
             {musicData.map((music) => (
-              <div
-                className="item-playlist"
-                data-id={music.id}
-                data-theme={music.theme}
-                key={music.id}
-              >
-                <div className="box-wrapper">
-                  <div className="cover-item">
-                    <img src={music.coverUrl} alt="Cover" />
-                  </div>
-                  <div className="info-item">
-                    <div className="title-info">{music.title}</div>
-                    <div className="gender-info">{music.gender}</div>
-                  </div>
-                </div>
-
-                <div className="play-button-item">
-                  <IonIcon icon={playCircle} />
-                </div>
-              </div>
+              <Music key={music.id} music={music} />
             ))}
           </div>
         </section>
