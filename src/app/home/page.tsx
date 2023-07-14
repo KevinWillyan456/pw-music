@@ -50,6 +50,7 @@ const Home = () => {
   const [audioControllerPlayToggle, setAudioControllerPlayToggle] =
     useState(true)
   const [indexAudio, setIndexAudio] = useState(0)
+  const [firstRender, setFirstRender] = useState(false)
 
   const audioGlobalRef = useRef<HTMLAudioElement | null>(null)
   const audioControllerPrevRef = useRef(null)
@@ -71,7 +72,7 @@ const Home = () => {
       if (audioGlobalRef.current) {
         audioGlobalRef.current.pause()
         setAudioControllerPlayToggle(true)
-        // musicAnimationStatus.classList.remove('run'); 
+        // musicAnimationStatus.classList.remove('run');
       }
     }
   }
@@ -150,7 +151,11 @@ const Home = () => {
       const currentTrack = musicData[indexAudio]
       if (audioGlobalRef.current) {
         audioGlobalRef.current.src = currentTrack.audioUrl
-        audioControllerPlayFunctionNoPause()
+        if (firstRender) {
+          audioControllerPlayFunctionNoPause()
+        } else {
+          setFirstRender(true)
+        }
       }
     }
   }, [indexAudio, musicData])
