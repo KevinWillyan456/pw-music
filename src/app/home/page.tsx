@@ -172,8 +172,13 @@ const Home = () => {
           </div>
 
           <div className="container-playlist">
-            {musicData.map((music) => (
-              <Music key={music.id} music={music} />
+            {musicData.map((music, index) => (
+              <Music
+                key={music.id}
+                music={music}
+                musicIndex={index}
+                setIndexAudio={setIndexAudio}
+              />
             ))}
           </div>
         </section>

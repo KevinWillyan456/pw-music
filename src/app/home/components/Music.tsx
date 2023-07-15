@@ -1,14 +1,24 @@
 import { IonIcon } from '@ionic/react'
 import { playCircle } from 'ionicons/icons'
 import { IMusic } from '../page'
+import { Dispatch, SetStateAction } from 'react'
 
-const Music = ({ music }: { music: IMusic }) => {
+const Music = ({
+  music,
+  musicIndex,
+  setIndexAudio,
+}: {
+  music: IMusic
+  musicIndex: number
+  setIndexAudio: Dispatch<SetStateAction<number>>
+}) => {
   return (
     <div
       className="item-playlist"
       data-id={music.id}
       data-theme={music.theme}
       key={music.id}
+      onClick={() => setIndexAudio(musicIndex)}
     >
       <div className="box-wrapper">
         <div className="cover-item">
