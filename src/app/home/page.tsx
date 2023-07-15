@@ -54,9 +54,11 @@ const Home = () => {
   const [firstRender, setFirstRender] = useState(false)
 
   const audioGlobalRef = useRef<HTMLAudioElement | null>(null)
-  const audioControllerPrevRef = useRef(null)
-  const audioControllerPlayRef = useRef(null)
-  const audioControllerNextRef = useRef(null)
+  const currentCoverRef = useRef<HTMLImageElement | null>(null)
+  const coverCurrentMusicRef = useRef<HTMLImageElement | null>(null)
+  const backgroundCoverRef = useRef<HTMLDivElement | null>(null)
+  const titleInfoCurrentMusicRef = useRef<HTMLDivElement | null>(null)
+  const genderInfoCurrentMusicRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     fetchData()
@@ -158,6 +160,24 @@ const Home = () => {
           setFirstRender(true)
         }
       }
+      if (currentCoverRef.current) {
+        currentCoverRef.current.src = currentTrack.coverUrl
+      }
+      if (coverCurrentMusicRef.current) {
+        coverCurrentMusicRef.current.src = currentTrack.coverUrl
+      }
+      if (backgroundCoverRef.current) {
+        backgroundCoverRef.current.style.setProperty(
+          'background-image',
+          `url("${currentTrack.coverUrl}")`
+        )
+      }
+      if (titleInfoCurrentMusicRef.current) {
+        titleInfoCurrentMusicRef.current.textContent = currentTrack.title
+      }
+      if (genderInfoCurrentMusicRef.current) {
+        genderInfoCurrentMusicRef.current.textContent = currentTrack.gender
+      }
     }
   }, [indexAudio, musicData])
 
@@ -184,7 +204,7 @@ const Home = () => {
         </section>
 
         <section className="main-display">
-          <div className="background-cover"></div>
+          <div ref={backgroundCoverRef} className="background-cover"></div>
 
           <div className="container-search">
             <div className="search-icon">
@@ -204,7 +224,7 @@ const Home = () => {
 
           <div className="current-cover">
             <div className="ghost-frame"></div>
-            <img src="https://pw-music-database.kevinsouza456.repl.co/Nightcore%20-%20Numb%20(Lyrics).jpg" />
+            <img ref={currentCoverRef} />
 
             <div className="container-frame"></div>
           </div>
@@ -271,17 +291,33 @@ const Home = () => {
 
         <section className="main-controls">
           <div className="container-side-1">
-            <div className="music-animation-status">
+            <div
+              className={
+                audioControllerPlayToggle
+                  ? 'music-animation-status'
+                  : 'music-animation-status run'
+              }
+            >
               <div style={{ marginRight: '5px' }}></div>
               <div style={{ marginRight: '5px' }}></div>
               <div></div>
             </div>
             <div className="cover-current-music">
-              <img src="https://pw-music-database.kevinsouza456.repl.co/Nightcore%20-%20Numb%20(Lyrics).jpg" />
+              <img ref={coverCurrentMusicRef} />
             </div>
             <div className="info-current-music">
-              <div className="title-info-current-music">Título</div>
-              <div className="gender-info-current-music">Nightcore</div>
+              <div
+                ref={titleInfoCurrentMusicRef}
+                className="title-info-current-music"
+              >
+                Título
+              </div>
+              <div
+                ref={genderInfoCurrentMusicRef}
+                className="gender-info-current-music"
+              >
+                Nightcore
+              </div>
 
               <div className="current-music-rating">
                 <IonIcon icon={star} style={{ marginRight: '2px' }} />
@@ -301,19 +337,16 @@ const Home = () => {
             <div className="container-controls">
               <IonIcon
                 icon={playSkipBackCircle}
-                ref={audioControllerPrevRef}
                 style={{ marginRight: '10px' }}
                 onClick={audioControllerPrevFunction}
               />
               <IonIcon
                 icon={audioControllerPlayToggle ? playCircle : pauseCircle}
-                ref={audioControllerPlayRef}
                 style={{ marginRight: '10px' }}
                 onClick={audioControllerPlayFunction}
               />
               <IonIcon
                 icon={playSkipForwardCircle}
-                ref={audioControllerNextRef}
                 onClick={audioControllerNextFunction}
               />
             </div>

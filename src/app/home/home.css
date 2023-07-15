@@ -778,14 +778,17 @@ iframe {
   width: 5px;
   height: 20px;
   align-self: flex-end;
+  --i: 0s;
 }
 .music-animation-status div:nth-child(2) {
   width: 5px;
   height: 25px;
+  --i: 100ms;
 }
 .music-animation-status div:nth-child(3) {
   width: 5px;
   height: 15px;
+  --i: 200ms;
 }
 @keyframes music-animation-status {
   0% {
