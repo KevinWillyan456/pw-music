@@ -15,6 +15,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
+      <head>
+        <link
+          rel="shortcut icon"
+          href="https://pw-music-database.kevinsouza456.repl.co/pw-music-icon.png"
+          type="image/x-icon"
+        />
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
   )

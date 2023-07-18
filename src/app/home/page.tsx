@@ -59,9 +59,12 @@ const Home = () => {
   const backgroundCoverRef = useRef<HTMLDivElement | null>(null)
   const titleInfoCurrentMusicRef = useRef<HTMLDivElement | null>(null)
   const genderInfoCurrentMusicRef = useRef<HTMLDivElement | null>(null)
+  const totalDurationRef = useRef<HTMLDivElement | null>(null)
+  const currentDurationRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     fetchData()
+    musicStateControllers()
   }, [])
 
   function audioControllerPlayFunction() {
@@ -159,6 +162,10 @@ const Home = () => {
         } else {
           setFirstRender(true)
         }
+        audioGlobalRef.current.addEventListener(
+          'ended',
+          audioControllerNextFunction
+        )
       }
       if (currentCoverRef.current) {
         currentCoverRef.current.src = currentTrack.coverUrl
@@ -180,6 +187,57 @@ const Home = () => {
       }
     }
   }, [indexAudio, musicData])
+
+  let canMoveTheSliderDuration = true
+
+  function musicStateControllers() {
+    if (audioGlobalRef.current) {
+      audioGlobalRef.current.addEventListener('timeupdate', () => {
+        if (canMoveTheSliderDuration) {
+          // sliderMusicDuration.value = parseInt(audioGlobal.currentTime / audioGlobal.duration * 100);
+          // if(musicDataShuffled[indexAudio].theme == 'Original'){
+          //     sliderMusicDuration.style.setProperty("background-image", `linear-gradient(to right, var(--color-blue-2) 0%, var(--color-blue-2) ${sliderMusicDuration.value}%, var(--color-white-1) ${sliderMusicDuration.value}%, var(--color-white-1) 100%`);
+          //     sliderMusicDurationDot.style.setProperty("left", `${(sliderMusicDuration.value)}%`)
+          // }
+          // if(musicDataShuffled[indexAudio].theme == 'Rock Version'){
+          //     sliderMusicDuration.style.setProperty("background-image", `linear-gradient(to right, var(--color-red-2) 0%, var(--color-red-2) ${sliderMusicDuration.value}%, var(--color-white-1) ${sliderMusicDuration.value}%, var(--color-white-1) 100%)`);
+          //     sliderMusicDurationDot.style.setProperty("left", `${(sliderMusicDuration.value)}%`)
+          // }
+
+          if (audioGlobalRef.current) {
+            let minCurrent = Math.floor(audioGlobalRef.current.currentTime / 60)
+            let segCurrent: number | string = Math.floor(
+              audioGlobalRef.current.currentTime % 60
+            )
+
+            if (segCurrent < 10) {
+              segCurrent = `0${segCurrent}`
+            }
+
+            if (currentDurationRef.current) {
+              currentDurationRef.current.innerHTML = `${minCurrent}:${segCurrent}`
+            }
+          }
+        }
+      })
+      audioGlobalRef.current.oncanplaythrough = () => {
+        if (audioGlobalRef.current) {
+          let minTotal = Math.floor(audioGlobalRef.current.duration / 60)
+          let segTotal: number | string = Math.floor(
+            audioGlobalRef.current.duration % 60
+          )
+
+          if (segTotal < 10) {
+            segTotal = `0${segTotal}`
+          }
+
+          if (totalDurationRef.current) {
+            totalDurationRef.current.innerHTML = `${minTotal}:${segTotal}`
+          }
+        }
+      }
+    }
+  }
 
   return (
     <>
@@ -352,14 +410,18 @@ const Home = () => {
             </div>
 
             <div className="container-duration-status">
-              <div className="current-duration">0:00</div>
+              <div ref={currentDurationRef} className="current-duration">
+                0:00
+              </div>
               <div className="slider-music-duration">
                 <div className="slider-music-duration-wrapper">
                   <input type="range" min="0" max="100" value="0" />
                   <div className="slider-music-duration-dot"></div>
                 </div>
               </div>
-              <div className="total-duration">0:00</div>
+              <div ref={totalDurationRef} className="total-duration">
+                0:00
+              </div>
             </div>
 
             <div className="container-volume">
