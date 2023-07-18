@@ -250,14 +250,15 @@ const Home = () => {
           </div>
 
           <div className="container-playlist">
-            {musicData.map((music, index) => (
-              <Music
-                key={music.id}
-                music={music}
-                musicIndex={index}
-                setIndexAudio={setIndexAudio}
-              />
-            ))}
+            {musicData.length > 0 &&
+              musicData.map((music, index) => (
+                <Music
+                  key={music.id}
+                  music={music}
+                  musicIndex={index}
+                  setIndexAudio={setIndexAudio}
+                />
+              ))}
           </div>
         </section>
 
