@@ -74,6 +74,7 @@ html {
 .terms-of-use-text .box-wrapper .text {
   color: var(--color-white-1);
   font-size: 18px;
+  line-height: 20.5px;
   text-align: justify;
 }
 .terms-of-use-text .box-wrapper .close {
@@ -153,7 +154,7 @@ html {
 .box-wrapper .button-login {
   display: flex;
 }
-.button-login button {
+.button-login a {
   width: 150px;
   color: var(--color-white-1);
   font-size: 25px;
@@ -161,6 +162,7 @@ html {
   background-color: var(--color-blue-4);
   border: none;
   cursor: pointer;
+  text-align: center;
 }
 
 .section-banner .button-register {
@@ -170,7 +172,7 @@ html {
   position: absolute;
   top: 80.5555%;
 }
-.button-register button {
+.button-register a {
   width: 200px;
   color: var(--color-white-1);
   font-size: 25px;
@@ -178,6 +180,7 @@ html {
   background-color: var(--color-blue-4);
   border: none;
   cursor: pointer;
+  text-align: center;
 }
 
 .section-banner {
@@ -650,7 +653,7 @@ html {
   .cabecalho {
     height: 60px;
   }
-  .button-login button {
+  .button-login a {
     width: 80px;
     height: 40px;
     font-size: 16px;

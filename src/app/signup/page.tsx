@@ -3,9 +3,9 @@ import './signup.css'
 const Signup = () => {
   return (
     <>
-      <div className="service-logo">
+      <a href="/" className="service-logo">
         <img src="https://pw-music-database.kevinsouza456.repl.co/pw-music-logo.png" />
-      </div>
+      </a>
 
       <section className="container">
         <form>

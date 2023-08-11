@@ -3,17 +3,40 @@
 import { IonIcon } from '@ionic/react'
 import { close, volumeHigh, newspaper } from 'ionicons/icons'
 import './index.css'
+import { useState } from 'react'
+
+console.error = (function (originalError) {
+  return function (...args) {
+    if (
+      typeof args[0] === 'string' &&
+      args[0].startsWith('Warning: Extra attributes from the server')
+    ) {
+      return
+    }
+    originalError.apply(console, args)
+  }
+})(console.error)
 
 const Index = () => {
+  const [termsOfUseText, setTermsOfUseText] = useState(false)
+
+  const toggleTermsVisibility = () => {
+    setTermsOfUseText(!termsOfUseText)
+  }
+
   return (
     <>
-      <div className="terms-of-use">
+      <div className="terms-of-use" onClick={toggleTermsVisibility}>
         <IonIcon icon={newspaper} />
       </div>
 
-      <div className="terms-of-use-text hidden">
+      <div className={`terms-of-use-text ${termsOfUseText ? '' : 'hidden'}`}>
         <div className="box-wrapper">
-          <div className="close" id="terms-of-use-close">
+          <div
+            className="close"
+            id="terms-of-use-close"
+            onClick={toggleTermsVisibility}
+          >
             <IonIcon icon={close} />
           </div>
           <div className="title">Termos de Uso</div>
@@ -30,9 +53,9 @@ const Index = () => {
       </div>
 
       <header className="cabecalho">
-        <div className="service-logo">
+        <a href="/" className="service-logo">
           <img src="https://pw-music-database.kevinsouza456.repl.co/pw-music-logo.png" />
-        </div>
+        </a>
 
         <div className="box-wrapper">
           <ul className="list-options">
@@ -50,7 +73,9 @@ const Index = () => {
             </li>
           </ul>
           <div className="button-login">
-            <button id="login">Login</button>
+            <a href="/login" id="login">
+              Login
+            </a>
           </div>
         </div>
       </header>
@@ -60,7 +85,9 @@ const Index = () => {
         <div className="title-2">Inscreva-se agora no PwMusic</div>
 
         <div className="button-register">
-          <button id="signup">Cadastrar-se</button>
+          <a href="/signup" id="signup">
+            Cadastrar-se
+          </a>
         </div>
 
         <div className="title-3">
