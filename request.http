@@ -61,7 +61,7 @@ POST http://localhost:3000/api/user/user-favorites HTTP/1.1
 content-type: application/json
 
 {
-    "musicId": 2,
+    "musicId": 1,
     "userId": 2
 }
 ###
@@ -69,11 +69,11 @@ PUT http://localhost:3000/api/user/user-favorites/3 HTTP/1.1
 content-type: application/json
 
 {
-    "musicId": 2,
+    "musicId": 1,
     "userId": 2
 }
 ###
-DELETE http://localhost:3000/api/user/user-favorites/5 HTTP/1.1
+DELETE http://localhost:3000/api/user/user-favorites/3 HTTP/1.1
 content-type: application/json
 
 #################### User Request - Historic
@@ -85,20 +85,20 @@ POST http://localhost:3000/api/user/user-historic HTTP/1.1
 content-type: application/json
 
 {
-    "musicId": 2,
+    "musicId": 1,
     "userId": 2
 }
 ###
-PUT http://localhost:3000/api/user/user-historic/1 HTTP/1.1
+PUT http://localhost:3000/api/user/user-historic/2 HTTP/1.1
 content-type: application/json
 
 {
-    "musicId": 2,
+    "musicId": 1,
     "userId": 2
 }
 
 ###
-DELETE http://localhost:3000/api/user/user-historic/1 HTTP/1.1
+DELETE http://localhost:3000/api/user/user-historic/2 HTTP/1.1
 content-type: application/json
 
 #################### Playlist Request
@@ -115,3 +115,17 @@ content-type: application/json
     "gender": "RAPs",
     "title": "The Best RAPs"
 }
+###
+PUT http://localhost:3000/api/playlist/1 HTTP/1.1
+content-type: application/json
+
+{
+    "coverUrl": "https://myurl-image.png",
+    "description": "This is playlist",
+    "gender": "RAPs",
+    "title": "The Best RAPs"
+}
+
+###
+DELETE http://localhost:3000/api/playlist/1 HTTP/1.1
+content-type: application/json
