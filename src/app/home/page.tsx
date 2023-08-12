@@ -61,6 +61,8 @@ const Home = () => {
   const genderInfoCurrentMusicRef = useRef<HTMLDivElement | null>(null)
   const totalDurationRef = useRef<HTMLDivElement | null>(null)
   const currentDurationRef = useRef<HTMLDivElement | null>(null)
+  const sliderMusicDurationRef = useRef<HTMLInputElement | null>(null)
+  const sliderMusicDurationDotRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     fetchData()
@@ -194,11 +196,32 @@ const Home = () => {
     if (audioGlobalRef.current) {
       audioGlobalRef.current.addEventListener('timeupdate', () => {
         if (canMoveTheSliderDuration) {
-          // sliderMusicDuration.value = parseInt(audioGlobal.currentTime / audioGlobal.duration * 100);
-          // if(musicDataShuffled[indexAudio].theme == 'Original'){
-          //     sliderMusicDuration.style.setProperty("background-image", `linear-gradient(to right, var(--color-blue-2) 0%, var(--color-blue-2) ${sliderMusicDuration.value}%, var(--color-white-1) ${sliderMusicDuration.value}%, var(--color-white-1) 100%`);
-          //     sliderMusicDurationDot.style.setProperty("left", `${(sliderMusicDuration.value)}%`)
-          // }
+          if (
+            sliderMusicDurationRef.current &&
+            audioGlobalRef.current &&
+            sliderMusicDurationDotRef.current
+          ) {
+            sliderMusicDurationRef.current.value = String(
+              parseInt(
+                String(
+                  (audioGlobalRef.current.currentTime /
+                    audioGlobalRef.current.duration) *
+                    100
+                )
+              )
+            )
+
+            // if (musicData[indexAudio].theme == 'Original') {
+            sliderMusicDurationRef.current.style.setProperty(
+              'background-image',
+              `linear-gradient(to right, var(--color-blue-2) 0%, var(--color-blue-2) ${sliderMusicDurationRef.current.value}%, var(--color-white-1) ${sliderMusicDurationRef.current.value}%, var(--color-white-1) 100%`
+            )
+            sliderMusicDurationDotRef.current.style.setProperty(
+              'left',
+              `${sliderMusicDurationRef.current.value}%`
+            )
+            // }
+          }
           // if(musicDataShuffled[indexAudio].theme == 'Rock Version'){
           //     sliderMusicDuration.style.setProperty("background-image", `linear-gradient(to right, var(--color-red-2) 0%, var(--color-red-2) ${sliderMusicDuration.value}%, var(--color-white-1) ${sliderMusicDuration.value}%, var(--color-white-1) 100%)`);
           //     sliderMusicDurationDot.style.setProperty("left", `${(sliderMusicDuration.value)}%`)
@@ -416,8 +439,17 @@ const Home = () => {
               </div>
               <div className="slider-music-duration">
                 <div className="slider-music-duration-wrapper">
-                  <input type="range" min="0" max="100" value="0" />
-                  <div className="slider-music-duration-dot"></div>
+                  <input
+                    ref={sliderMusicDurationRef}
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="0"
+                  />
+                  <div
+                    ref={sliderMusicDurationDotRef}
+                    className="slider-music-duration-dot"
+                  ></div>
                 </div>
               </div>
               <div ref={totalDurationRef} className="total-duration">
